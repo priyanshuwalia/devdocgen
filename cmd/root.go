@@ -7,7 +7,7 @@ import (
 )
 
 var rootCmd = &cobra.Command{
-	Use:   "readmegen",
+	Use:   "devdocgen",
 	Short: "Generate a README by analyzing a repository",
 }
 

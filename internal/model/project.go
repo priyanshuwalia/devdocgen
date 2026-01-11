@@ -14,4 +14,5 @@ type ProjectMetadata struct {
     HasEnvFile       bool
     EnvExampleFile   string
     License string
+    Dependencies   []string
 }
