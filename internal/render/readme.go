@@ -9,10 +9,11 @@ import (
 )
 
 func GenerateReadme(meta *model.ProjectMetadata, outputPath string, overwrite bool, dryRun bool) error {
-	tmpl, err := template.ParseFiles("templates/readme.md.tmpl")
-	if err != nil {
-		return err
-	}
+	tmpl, err := template.ParseFS(TemplateFS, "templates/readme.md.tmpl")
+    if err != nil {
+        return err
+    }
+	
 
 	if dryRun {
 		return tmpl.Execute(os.Stdout, meta)

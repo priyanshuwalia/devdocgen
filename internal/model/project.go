@@ -15,4 +15,5 @@ type ProjectMetadata struct {
     EnvExampleFile   string
     License string
     Dependencies   []string
+    Structure string
 }
