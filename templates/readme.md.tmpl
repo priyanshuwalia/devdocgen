@@ -59,5 +59,10 @@ This project includes a Dockerfile for containerized usage.
 A `docker-compose.yml` file is provided for multi-service setup.
 {{- end }}
 
+{{- if .License }}
+
+## License
+This project is licensed under the {{ .License }} License.
+{{- end }}
 ```
 

@@ -13,6 +13,8 @@ func DetectProject(root string) *model.ProjectMetadata {
     DetectNodeScripts(root, meta)
     DetectEnv(root, meta)
     DetectDocker(root, meta)
+    meta.License = DetectLicense(root)
+
 
     return meta
 }

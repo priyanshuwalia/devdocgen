@@ -13,4 +13,5 @@ type ProjectMetadata struct {
     HasDockerCompose bool
     HasEnvFile       bool
     EnvExampleFile   string
+    License string
 }

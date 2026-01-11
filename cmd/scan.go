@@ -10,6 +10,12 @@ import (
 	"github.com/spf13/cobra"
 )
 
+var (
+	outputPath string
+	overwrite  bool
+	dryRun     bool
+)
+
 var scanCmd = &cobra.Command{
 	Use:   "scan [path]",
 	Short: "Scan a repository and generate a README",
@@ -24,16 +30,39 @@ var scanCmd = &cobra.Command{
 
 		meta := detector.DetectProject(path)
 
-		err = render.GenerateReadme(meta, "README.generated.md")
+		err = render.GenerateReadme(meta, outputPath, overwrite, dryRun)
 		if err != nil {
 			return err
 		}
 
-		fmt.Println("README.generated.md created successfully")
+		if !dryRun {
+			fmt.Println("README generated at:", outputPath)
+		}
+
 		return nil
 	},
 }
 
 func init() {
+	scanCmd.Flags().StringVarP(
+		&outputPath,
+		"output",
+		"o",
+		"README.generated.md",
+		"Output README file",
+	)
+	scanCmd.Flags().BoolVar(
+		&overwrite,
+		"overwrite",
+		false,
+		"Overwrite existing README",
+	)
+	scanCmd.Flags().BoolVar(
+		&dryRun,
+		"dry-run",
+		false,
+		"Print README to stdout without writing file",
+	)
+
 	rootCmd.AddCommand(scanCmd)
 }
