@@ -1,0 +1,63 @@
+
+# {{ .Name }}
+
+{{- if .Languages }}
+
+## Tech Stack
+{{- range .Languages }}
+- {{ . }}
+{{- end }}
+{{- end }}
+
+{{- if .InstallCommands }}
+
+## Installation
+{{- range .InstallCommands }}
+
+```bash
+{{ . }}
+````
+
+{{- end }}
+{{- end }}
+
+{{- if .RunCommands }}
+
+## Running Locally
+
+{{- range .RunCommands }}
+
+```bash
+{{ . }}
+```
+
+{{- end }}
+{{- end }}
+
+{{- if .HasEnvFile }}
+
+## Environment Variables
+
+{{- if .EnvExampleFile }}
+Copy `{{ .EnvExampleFile }}` to `.env` and update values as needed.
+{{- else }}
+This project uses environment variables. Check the documentation or source code for required variables.
+{{- end }}
+{{- end }}
+
+{{- if .HasDocker }}
+
+## Docker
+
+This project includes a Dockerfile for containerized usage.
+{{- end }}
+
+{{- if .HasDockerCompose }}
+
+## Docker Compose
+
+A `docker-compose.yml` file is provided for multi-service setup.
+{{- end }}
+
+```
+
